@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    #calendar {
+      width: 300px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+    }
+
+    .calendar-header {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .calendar-header button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+
+    .calendar-header span {
+      font-weight: bold;
+    }
+
+    .day-names, .days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      text-align: center;
+    }
+
+    .day-names div {
+      font-weight: bold;
+      padding: 5px 0;
+    }
+
+    .days div {
+      padding: 5px 0;
+    }
+  </style>
+</head>
+<body>
+    <fieldset>
+        <table border="0" align="center">
+          <tr>
+            <td>
+              <p><i class="fas fa-users"></i> 3,454</p>
+      <p>ÉTUDIANTS</p>
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <p><i class="fas fa-user-graduate"></i> +225</p>
+      <p>DOCTORANTS</p>
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <p><i class="fas fa-layer-group"></i> 25</p>
+      <p>FILIÈRES</p>
+            </td>
+          </tr>
+        </table>
+     </fieldset>
+  <fieldset>
+  <table border="0" align="center" >
+    <tr>
+    <td><img src="images/logo1.png" alt="Logo RUMI" width="70"></td>
+   <td> <img src="images/logo2.png" alt="Logo Club IFA" width="60"></td>
+    <td><img src="images/logo3.png" alt="Logo ER&M" width="80"></td>
+    <td><img src="images/logo4.png" alt="Logo ALC" width="80"></td>
+   <td><img src="images/logo5.png" alt="Logo Club Artistique" width="80"></td>
+    <td><img src="images/logo6.png" alt="Logo COFE" width="80"></td>
+  </tr>
+ </table>
+</fieldset>
+
+<fieldset>
+  <table>
+    <tr>
+    <td>
+      <img src="images/logo_fstg.png" alt="Logo FST" width="200">
+      <p>Faculté des Sciences et Techniques</p>
+      <p>B.P. 549, Av. Abdelkarim Elkhattabi,<br> Guéliz Marrakech</p>
+      <p>📞 (+212) 524 43 34 04</p>
+      <p>📞 (+212) 524 43 31 70</p>
+      <p>
+        <a href="https://facebook.com">Facebook</a> |
+        <a href="https://twitter.com">Twitter</a> |
+        <a href="https://linkedin.com">LinkedIn</a>
+      </p>
+    </td>
+
+    <!-- Liens utiles -->
+    <td>
+      <h4>Liens utiles</h4>
+      <ul>
+        <li><a href="https://www.men.gov.ma/Fr/Pages/Accueil.aspx "target="_parent">M.E.N.F.P.E.S.R.S</a></li>
+        <li><a href="accueil.html" target="_parent">H.C.P</a></li>
+        <li><a href="accueil.html" target="_parent">C.N.R.S.T</a></li>
+        <li><a href="accueil.html" target="_parent">I.M.I.S.T</a></li>
+      </ul>
+    </td>
+
+    <!-- Services -->
+    <td>
+      <h4>Services</h4>
+      <ul>
+        <li><a href="eservices.html" target="_parent">E-services</a></li>
+        <li><a href="accueil.html" target="_parent">Consultation des notes du T.C</a></li>
+        <li><a href="accueil.html" target="_parent">UC@Mobile / UC@Student</a></li>
+        <li><a href="https://campusconnecte.online" target="_parent">Accès au réseau wifi de la F.S.T</a></li>
+      </ul>
+    </td>
+
+    <!-- Calendrier (non fonctionnel sans JS) -->
+    <td id="calendar">
+  <div class="calendar-header">
+    <button onclick="prevMonth()">&#10094;</button>
+    <span id="monthYear"></span>
+    <button onclick="nextMonth()">&#10095;</button>
+  </div>
+  <div class="day-names">
+    <div>Lu</div>
+    <div>Ma</div>
+    <div>Me</div>
+    <div>Je</div>
+    <div>Ve</div>
+    <div>Sa</div>
+    <div>Di</div>
+  </div>
+  <div class="days" id="calendarDays"></div>
+</tr>
+</table>
+ <div >
+    <p>©2020 – Faculté des Sciences et Techniques Marrakech</p>
+  </div>
+<script>
+  const monthYear = document.getElementById("monthYear");
+  const calendarDays = document.getElementById("calendarDays");
+
+  let currentDate = new Date();
+
+  function renderCalendar(date) {
+    const year = date.getFullYear();
+    const month = date.getMonth();
+
+    const firstDayOfMonth = new Date(year, month, 1);
+    const lastDayOfMonth = new Date(year, month + 1, 0);
+    const daysInMonth = lastDayOfMonth.getDate();
+    const startDay = (firstDayOfMonth.getDay() + 6) % 7; // pour que lundi = 0
+
+    monthYear.textContent = `${date.toLocaleString('fr-FR', { month: 'long' })} ${year}`;
+
+    calendarDays.innerHTML = "";
+
+    // Ajouter les jours vides avant le 1er du mois
+    for (let i = 0; i < startDay; i++) {
+      const emptyCell = document.createElement("div");
+      calendarDays.appendChild(emptyCell);
+    }
+
+    // Remplir les jours du mois
+    for (let day = 1; day <= daysInMonth; day++) {
+      const dayCell = document.createElement("div");
+      dayCell.textContent = day;
+      calendarDays.appendChild(dayCell);
+    }
+  }
+
+  function prevMonth() {
+    currentDate.setMonth(currentDate.getMonth() - 1);
+    renderCalendar(currentDate);
+  }
+
+  function nextMonth() {
+    currentDate.setMonth(currentDate.getMonth() + 1);
+    renderCalendar(currentDate);
+  }
+
+  // Initial render
+  renderCalendar(currentDate);
+</script>
+     
+
+  
+  </fieldset>
+</body>
+</html>

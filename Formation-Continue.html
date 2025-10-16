@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: #1a3a5f;
+            color: white;
+            padding: 15px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #a8d1ff;
+        }
+        
+        /* Image pleine largeur avec texte */
+        .full-width-hero {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+        
+        .full-width-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+        }
+        
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-text p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Sections principales */
+        .main-sections {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .section-card {
+            flex: 1 1 300px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section-card h2 {
+            color: #1a3a5f;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        
+        /* Accueil section */
+        .accueil-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .accueil-section h2 {
+            color: #1a3a5f;
+            margin-bottom: 15px;
+        }
+        
+        .accueil-section ul {
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .accueil-section ul li {
+            background-color: #e6f2ff;
+            padding: 10px 15px;
+            border-radius: 4px;
+            flex: 1 1 200px;
+            text-align: center;
+        }
+        
+        /* E-services */
+        .e-services {
+            background-color: #1a3a5f;
+            color: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .e-services h2 {
+            margin-bottom: 15px;
+        }
+        
+        .e-services ul {
+            list-style-type: none;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .e-services ul li {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 4px;
+            flex: 1 1 150px;
+            text-align: center;
+        }
+        
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            flex: 1 1 150px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1a3a5f;
+            display: block;
+        }
+        
+        .stat-change {
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a3a5f;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-text p {
+                font-size: 1.2rem;
+            }
+            
+            .accueil-section ul, .e-services ul {
+                flex-direction: column;
+            }
+        }
+        </style>
+</head>
+<body>
+    <fieldset>
+    <iframe src="header.html" 
+frameborder="" style="width: 
+100%; height: 300px;
+"></iframe>
+
+<div class="full-width-hero">
+        <img src="images/fstg11.jpg" alt="FSTG">
+        <div class="hero-text">
+            <h1>Formation continue</h1>
+            <p>Accueil Page actuel</p>
+        </div>
+    </div>
+    <h1>Formation continue</h1>
+    <ul>
+        <li><strong>Systèmes Informatiques Répartis (2025-2026)</strong>
+            <ul>
+                <li>Fiche de présentation de la Licence</li>
+                <li>Procédure de candidature</li>
+            </ul>
+        </li>
+        
+        <li><strong>Génie Civil (GC) (2023-2024)</strong>
+            <ul>
+                <li>Fiche de présentation de la Licence</li>
+                <li>Procédure de candidature</li>
+            </ul>
+        </li>
+        
+        <li><strong>Maintenance Industrielle en Génie Electrique (2021-2022)</strong>
+            <ul>
+                <li>Fiche de présentation de la Licence</li>
+                <li>Procédure de candidature</li>
+            </ul>
+        </li>
+        
+        <li><strong>MASTER PROFESSIONNEL D'UNIVERSITE : Ingénierie informatique pour les systèmes intelligents (2021-2022)</strong>
+            <ul>
+                <li>Fiche de présentation de la formation</li>
+                <li>Affiche de la formation</li>
+            </ul>
+        </li>
+        
+        <li><strong>eManagement et Ingénierie du Business Intelligence (eMIBI) (2021-2022)</strong>
+            <ul>
+                <li>Fiche de présentation de la Licence</li>
+                <li>Procédure de candidature</li>
+            </ul>
+        </li>
+        
+        <li><strong>Master Ingénierie Génie Civil, Environnement et Qualité (2020-2021)</strong>
+            <ul>
+                <li>Fiche de présentation du Master</li>
+                <li>Procédure de candidature</li>
+            </ul>
+        </li>
+    </ul>
+
+<iframe src="footer.html" 
+frameborder="" style="width: 
+100%; height: 300px;
+"></iframe>
+  </fieldset>  
+</body>
+</html>

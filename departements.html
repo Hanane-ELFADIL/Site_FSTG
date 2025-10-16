@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: #1a3a5f;
+            color: white;
+            padding: 15px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #a8d1ff;
+        }
+        
+        /* Image pleine largeur avec texte */
+        .full-width-hero {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+        
+        .full-width-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+        }
+        
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-text p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Sections principales */
+        .main-sections {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .section-card {
+            flex: 1 1 300px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section-card h2 {
+            color: #1a3a5f;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        
+        /* Accueil section */
+        .accueil-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .accueil-section h2 {
+            color: #1a3a5f;
+            margin-bottom: 15px;
+        }
+        
+        .accueil-section ul {
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .accueil-section ul li {
+            background-color: #e6f2ff;
+            padding: 10px 15px;
+            border-radius: 4px;
+            flex: 1 1 200px;
+            text-align: center;
+        }
+        
+        /* E-services */
+        .e-services {
+            background-color: #1a3a5f;
+            color: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .e-services h2 {
+            margin-bottom: 15px;
+        }
+        
+        .e-services ul {
+            list-style-type: none;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .e-services ul li {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 4px;
+            flex: 1 1 150px;
+            text-align: center;
+        }
+        
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            flex: 1 1 150px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1a3a5f;
+            display: block;
+        }
+        
+        .stat-change {
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a3a5f;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-text p {
+                font-size: 1.2rem;
+            }
+            
+            .accueil-section ul, .e-services ul {
+                flex-direction: column;
+            }
+        }
+        </style>
+</head>
+<body>
+    <fieldset>
+    <iframe src="header.html" 
+frameborder="" style="width: 
+100%; height: 300px;
+"></iframe>
+
+<div class="full-width-hero">
+        <img src="images/fstg11.jpg" alt="FSTG">
+        <div class="hero-text">
+            <h1>Départements de la FSTG</h1>
+            <p>Accueil Page actuel</p>
+        </div>
+    </div>
+    <table border="0">
+        <tr>
+            <td>
+                <fieldset>
+                    <img src="images/m.png" alt="Mathematiques">
+                    <h2>Mathematiques</h2>
+                    <small>Chef du département:</small><br>
+                    <strong>Pr. Said RAGHAY</strong><br>
+                    <i class="bi bi-telephone-fill"></i> <a href="accueil.html">(212) 6 70 09 95 31</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/></svg> 
+                    <a href="accueil.html">s.raghay@uca.ma</a><br>
+                </fieldset>                
+            </td><td>
+                <fieldset>
+                    <img src="images/P.png" alt="Physique appliquée">
+                    <h2>Physique appliquée</h2>
+                    <small>Chef du département:</small><br>
+                    <strong>Pr. Abdellatif BOURIAL</strong><br>
+                    <i class="bi bi-telephone-fill"></i><a href="accueil.html">  (212) 6 70 09 95 35</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/></svg>
+                    <a href="accueil.html">a.bourial@uca.ma</a><br>
+                </fieldset>                
+            </td>
+        </tr><tr>
+            <td>
+                <fieldset>
+                    <img src="images/s.png" alt="Sciences Chimiques">
+                    <h2>Sciences Chimiques</h2>
+                    <small>Chef du département:</small><br>
+                    <strong>Pr. Khalid KHATIB</strong><br>
+                    <i class="bi bi-telephone-fill"></i><a href="accueil.html"> (212) 6 70 09 95 61</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/></svg><a href="accueil.html"> k.khatib@uca.ma</a>
+                </fieldset>                
+            </td><td>
+                <fieldset>
+                    <img src="images/st.png" alt="Sciences de la terre">
+                    <h2>Sciences de la terre</h2>
+                    <small>Chef du département:</small><br>
+                    <strong>Pr. Brahim IGMOULLAN</strong><br>
+                    <i class="bi bi-telephone-fill"></i><a href="accueil.html"> (212) 6 70 09 95 32</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/></svg>
+                    <a href="accueil.html">b.igmoullan@uca.ma</a>
+                </fieldset>                
+            </td>
+        </tr><tr>
+            <td>
+                <fieldset>
+                    <img src="images/B.png" alt="Biologie">
+                    <h2>Biologie</h2>
+                    <small>Chef du département:</small><br>
+                    <strong>Pr. Mimoun EL KAOUA</strong><br>
+                    <i class="bi bi-telephone-fill"></i><a href="accueil.html"> (212) 6 70 09 95 45</a><br>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/></svg><a href="accueil.html">m.elkaoua@uca.ma</a><br>
+                </fieldset>                
+            </td><td>
+                <fieldset>
+                    <img src="images/G.png" alt="Génie Civil">
+                    <h2>Génie Civil</h2>
+                    <small>Chef du département:</small><br>
+                    <strong>Pr. Azzouz KCHIKACH</strong><br>
+                    <i class="bi bi-telephone-fill"></i><a href="accueil.html"> (212) 6 70 09 88 84</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/></svg>
+                    <a href="accueil.html"> a.kchikach@uca.ma</a>
+                </fieldset>                
+            </td>
+        </tr><tr>
+            <td>
+                <fieldset>
+                    <img src="images/i.png" alt="Informatique">
+                    <h2>Informatique</h2>
+                    <small>Chef du département:</small><br>
+                    <strong>Pr. Soulaimane KALOUN</strong><br>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/></svg>
+                    <a href="accueil.html">so.kaloun@uca.ma</a>
+                </fieldset>                
+            </td><td>
+                <fieldset>
+                    <img src="images/t.png" alt="Techniques de Communication et Management">
+                    <h2>Techniques de Communication et Management</h2>
+                    <small>Chef du département:</small><br>
+                    <strong>Pr. Abdelghani BELAKOUIR</strong><br>
+                    <i class="bi bi-telephone-fill"></i><a href="accueil.html">(212) 6 70 09 95 17</a><br>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/></svg>
+                    <a href="accueil.html">a.belakouiri@uca.ma</a>
+                </fieldset>                
+            </td>
+        </tr>
+    </table>
+
+<iframe src="footer.html" 
+frameborder="" style="width: 
+100%; height: 300px;
+"></iframe>
+  </fieldset>  
+</body>
+</html>
